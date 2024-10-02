@@ -16,7 +16,7 @@ namespace BackTestNotissimus.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostMouseData([FromBody] List<int[]> coordinates)
+        public async Task<IActionResult> PostMouseData([FromBody] List<long[]> coordinates)
         {
             if (coordinates == null || !coordinates.Any())
             {
