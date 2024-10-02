@@ -16,7 +16,7 @@ namespace BackTestNotissimus.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostMouseData([FromBody] List<int[]> coordinates)
+        public async Task<IActionResult> PostData([FromBody] List<long[]> coordinates)
         {
             if (coordinates == null || !coordinates.Any())
             {
@@ -31,11 +31,11 @@ namespace BackTestNotissimus.Controllers
             _context.Mouses.Add(mouseData);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetMouseData), new { id = mouseData.Id }, mouseData);
+            return CreatedAtAction(nameof(GetData), new { id = mouseData.Id }, mouseData);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Mouse>> GetMouseData(int id)
+        public async Task<ActionResult<Mouse>> GetData(int id)
         {
             var mouseData = await _context.Mouses.FindAsync(id);
             if (mouseData == null)
